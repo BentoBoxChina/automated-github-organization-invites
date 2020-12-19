@@ -95,13 +95,13 @@ post "/add" do
     if team.nil?
       # team was blank or could not be found, just add user to org
       client.update_organization_membership(org_name, :user => params["github-user"])
-      "Sent invite to join '" + org_name + "', Check your EMAIL"
+      "请检查你的邮箱收件箱"
     else
       # team_id valid so invite member directly to org's team
       client.add_team_membership(team.id, params["github-user"])      
-      "Sent invite to join '" + org_name + "' and team '" + team_name + "', Check your EMAIL"
+      "请检查你的邮箱收件箱"
     end
   else
-    "User not found. Please check your spelling"
+    "用户不存在. 请检查拼写"
   end
 end
